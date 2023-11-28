@@ -9,7 +9,7 @@ export const UserCard = () => {
   const dispatch = useStoreDispatch()
 
   return (
-    <div className='card bg-neutral text-neutral-content'>
+    <div className='card bg-base-300 text-base'>
       <div className='card-body items-center text-center'>
         <h2 className='card-title'>{fullName}</h2>
         <p>{type}</p>
