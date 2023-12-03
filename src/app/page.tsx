@@ -8,9 +8,9 @@ export const Home = () => {
       <main className='w-screen h-screen flex flex-col items-center justify-center'>
         <button
           onClick={() => {
-            navigate('/')
+            navigate('/main')
           }}
-          className='btn btn-lg btn-wide uppercase'
+          className='btn btn-lg btn-wide btn-primary'
         >
           Run Konspekt
         </button>
