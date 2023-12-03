@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import accountSlice from './slices/account'
+import filesSlice from './slices/files'
 
 export const store = configureStore({
   reducer: {
-    account: accountSlice,
+    files: filesSlice,
   },
 })
 
