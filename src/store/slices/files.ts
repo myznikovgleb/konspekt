@@ -6,8 +6,8 @@ import {
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import type { StoreState } from '../store'
-import { client } from '../../api/client'
+import type { StoreState } from '@/store/store'
+import { client } from '@/api/client'
 
 export type File = {
   id: string
