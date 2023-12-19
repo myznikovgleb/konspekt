@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 
-import { useStoreDispatch, useStoreSelector } from '@/store/hooks'
+import { useStoreDispatch, useStoreSelector } from '@/app/hooks'
 import {
   fetchFiles,
   selectAllFiles,
   selectFetchingStatus,
-} from '@/store/slices/files'
-import { FileIcon } from '@/components'
+} from '@/entities/file/model/filesSlice'
+import { FileIcon } from '@/entities/file/ui'
 
 export const Main = () => {
   const fetchingStatus = useStoreSelector(selectFetchingStatus)

@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 
-import type { File } from '@/store/slices/files'
+import type { File } from '@/entities/file/model/filesSlice'
 
 export const client: {
   delay: number
