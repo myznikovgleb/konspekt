@@ -4,10 +4,10 @@ import {
   createSlice,
 } from '@reduxjs/toolkit'
 
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { client } from '@/shared/api/client'
 
 import type { StoreState } from '@/app/store'
-import { client } from '@/shared/api/client'
+import type { PayloadAction } from '@reduxjs/toolkit'
 
 export type File = {
   id: string
@@ -51,5 +51,3 @@ export const { selectAll: selectAllFiles, selectById: selectFileById } =
   filesAdapter.getSelectors((state: StoreState) => state.files)
 
 export const selectFetchingStatus = (state: StoreState) => state.files.status
-
-export default filesSlice.reducer
