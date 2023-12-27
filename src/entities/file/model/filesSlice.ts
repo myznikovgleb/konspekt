@@ -47,7 +47,10 @@ export const fetchFiles = createAsyncThunk('files/fetchFiles', async () => {
   return response
 })
 
-export const { selectAll: selectAllFiles, selectById: selectFileById } =
-  filesAdapter.getSelectors((state: StoreState) => state.files)
+export const {
+  selectAll: selectAllFiles,
+  selectById: selectFileById,
+  selectIds: selectFilesIds,
+} = filesAdapter.getSelectors((state: StoreState) => state.files)
 
 export const selectFetchingStatus = (state: StoreState) => state.files.status
