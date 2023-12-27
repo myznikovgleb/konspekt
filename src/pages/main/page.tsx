@@ -26,7 +26,7 @@ export const Main = () => {
         ) : (
           <div>
             {files.map((file) => (
-              <FileIcon filename={file.filename} key={file.id} />
+              <FileIcon filename={file.filename} id={file.id} key={file.id} />
             ))}
           </div>
         )}
