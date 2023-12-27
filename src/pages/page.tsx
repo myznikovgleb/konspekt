@@ -5,12 +5,12 @@ export const Home = () => {
 
   return (
     <>
-      <main className='w-screen h-screen flex flex-col items-center justify-center'>
+      <main className="flex h-screen w-screen flex-col items-center justify-center">
         <button
           onClick={() => {
             navigate('/main')
           }}
-          className='btn btn-lg btn-wide btn-primary'
+          className="btn btn-primary btn-lg btn-wide"
         >
           Run Konspekt
         </button>

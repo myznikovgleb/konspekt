@@ -10,8 +10,8 @@ export const File = () => {
 
   return (
     <>
-      <main className='w-screen h-screen flex flex-col items-center justify-center'>
-        <div className='text-xl'>{file?.content}</div>
+      <main className="flex h-screen w-screen flex-col items-center justify-center">
+        <div className="text-xl">{file?.content}</div>
       </main>
     </>
   )
