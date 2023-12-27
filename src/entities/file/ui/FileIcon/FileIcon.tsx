@@ -17,12 +17,12 @@ export const FileIcon = (props: FileIconProps) => {
   return (
     <div
       onPointerDown={handlerPointerDown}
-      className='p-4 flex flex-col items-center justify-center gap-4 hover:bg-base-200 rounded-xl cursor-pointer'
+      className="flex cursor-pointer flex-col items-center justify-center gap-4 rounded-xl p-4 hover:bg-base-200"
     >
-      <div className='w-16 h-16 flex flex-col items-center justify-center bg-base-300 text-base rounded-xl'>
-        <BookOpenIcon className='w-8 h-8 text-base' />
+      <div className="flex h-16 w-16 flex-col items-center justify-center rounded-xl bg-base-300 text-base">
+        <BookOpenIcon className="h-8 w-8 text-base" />
       </div>
-      <div className='text-lg font-semibold'>{filename}</div>
+      <div className="text-lg font-semibold">{filename}</div>
     </div>
   )
 }

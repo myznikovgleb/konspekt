@@ -20,9 +20,9 @@ export const Main = () => {
 
   return (
     <>
-      <main className='w-screen h-screen flex flex-col items-center justify-center'>
+      <main className="flex h-screen w-screen flex-col items-center justify-center">
         {fetchingStatus === 'Pending' ? (
-          <span className='loading loading-spinner loading-lg text-primary'></span>
+          <span className="loading loading-spinner loading-lg text-primary"></span>
         ) : (
           <div>
             {files.map((file) => (
