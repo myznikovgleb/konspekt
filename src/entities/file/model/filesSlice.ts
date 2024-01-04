@@ -7,16 +7,9 @@ import {
 import { client } from '@/shared/api/client'
 
 import type { StoreState } from '@/app/store'
+import type { File } from '@/entities/file/types'
+import type { Status } from '@/shared/api/client'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
-export type File = {
-  id: string
-  filename: string
-  date: number
-  content: string
-}
-
-type Status = 'Pending' | 'Fulfilled' | 'Rejected'
 
 const filesAdapter = createEntityAdapter<File>({
   sortComparer: (a, b) => a.date - b.date,
