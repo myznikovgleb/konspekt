@@ -1,6 +1,6 @@
 import { FileIcon } from '@/entities/file/ui'
 
-import type { File } from '../model/filesSlice'
+import type { File } from '@/entities/file/types'
 
 type FileFolderProps = { files: File[] }
 

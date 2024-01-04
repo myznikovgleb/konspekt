@@ -1,6 +1,8 @@
 import { nanoid } from 'nanoid'
 
-import type { File } from '@/entities/file/model/filesSlice'
+import type { File } from '@/entities/file/types'
+
+export type Status = 'Pending' | 'Fulfilled' | 'Rejected'
 
 export const client: {
   delay: number
