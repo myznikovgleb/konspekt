@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 
 import { useStoreSelector } from '@/app/hooks'
 import { selectFileById } from '@/entities/file/model/filesSlice'
+import { Layout } from '@/shared/ui'
 
 export const File = () => {
   const { id = '' } = useParams()
@@ -9,10 +10,8 @@ export const File = () => {
   const file = useStoreSelector((state) => selectFileById(state, id))
 
   return (
-    <>
-      <main className="flex h-screen w-screen flex-col items-center justify-center">
-        <div className="text-xl">{file?.content}</div>
-      </main>
-    </>
+    <Layout>
+      <div className="text-xl">{file?.content}</div>
+    </Layout>
   )
 }
