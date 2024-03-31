@@ -1,2 +1,2 @@
-export * from './Layout'
-export * from './Spinner'
+export * from './layout'
+export * from './spinner'

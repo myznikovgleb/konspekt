@@ -5,7 +5,7 @@ import type { File } from '@/entities/file/types'
 
 type FileIconProps = Pick<File, 'filename' | 'id'>
 
-export const FileIcon = (props: FileIconProps) => {
+const FileIcon = (props: FileIconProps) => {
   const { filename, id } = props
 
   const path = `/viewer/${id}`
@@ -22,3 +22,5 @@ export const FileIcon = (props: FileIconProps) => {
     </Link>
   )
 }
+
+export { FileIcon }

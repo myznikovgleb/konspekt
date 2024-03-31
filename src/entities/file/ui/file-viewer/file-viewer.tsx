@@ -10,7 +10,7 @@ type FileViewerProps = {
   id: string
 }
 
-export const FileViewer = (props: FileViewerProps) => {
+const FileViewer = (props: FileViewerProps) => {
   const { id } = props
 
   const file = useStoreSelector((state) => selectFileById(state, id))
@@ -54,3 +54,5 @@ export const FileViewer = (props: FileViewerProps) => {
     </form>
   )
 }
+
+export { FileViewer }

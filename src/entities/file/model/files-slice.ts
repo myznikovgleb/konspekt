@@ -8,7 +8,7 @@ import { client } from '@/shared/api/client'
 
 import type { StoreState } from '@/app/store'
 import type { File } from '@/entities/file/types'
-import type { Status } from '@/shared/api/client'
+import type { Status } from '@/shared/api'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 const filesAdapter = createEntityAdapter<File>({
@@ -16,7 +16,7 @@ const filesAdapter = createEntityAdapter<File>({
 })
 
 const initialState = filesAdapter.getInitialState<{ status: Status }>({
-  status: 'Pending',
+  status: 'pending',
 })
 
 export const filesSlice = createSlice({
@@ -37,10 +37,10 @@ export const filesSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchFiles.pending, (state) => {
-        state.status = 'Pending'
+        state.status = 'pending'
       })
       .addCase(fetchFiles.fulfilled, (state, action: PayloadAction<File[]>) => {
-        state.status = 'Fulfilled'
+        state.status = 'fulfilled'
         filesAdapter.upsertMany(state, action.payload)
       })
   },

@@ -9,13 +9,13 @@ import {
 import { FileFolder } from '@/entities/file/ui'
 import { Layout, Spinner } from '@/shared/ui'
 
-export const Folder = () => {
+const _folder_ = () => {
   const fetchingStatus = useStoreSelector(selectFetchingStatus)
   const files = useStoreSelector(selectAllFiles)
 
   const dispatch = useStoreDispatch()
 
-  const isPending = fetchingStatus === 'Pending'
+  const isPending = fetchingStatus === 'pending'
 
   useEffect(() => {
     if (isPending) dispatch(fetchFiles())
@@ -25,3 +25,5 @@ export const Folder = () => {
     <Layout>{isPending ? <Spinner /> : <FileFolder files={files} />}</Layout>
   )
 }
+
+export { _folder_ }

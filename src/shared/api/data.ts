@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid'
 
-import type { File } from '@/entities/file/types'
+import type { File } from '@/entities/file'
 
-export const data: File[] = [
+const data: File[] = [
   {
     id: nanoid(),
     filename: 'readme.md',
@@ -20,3 +20,5 @@ export const data: File[] = [
     content: `Type something below.`,
   },
 ]
+
+export { data }
