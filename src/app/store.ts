@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { filesSlice } from '../entities/file/model'
+import { fileSlice } from '../entities/file/model'
 
 export const store = configureStore({
   reducer: {
-    files: filesSlice.reducer,
+    files: fileSlice.reducer,
   },
 })
 
