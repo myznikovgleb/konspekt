@@ -1,1 +1,1 @@
-export * from './file_tmp'
+export * from './file'
