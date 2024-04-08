@@ -4,7 +4,7 @@ import type { File } from '@/entities/file/types'
 
 type FileFolderProps = { files: File[] }
 
-export const FileFolder = (props: FileFolderProps) => {
+const FileFolder = (props: FileFolderProps) => {
   const { files } = props
 
   return (
@@ -17,3 +17,5 @@ export const FileFolder = (props: FileFolderProps) => {
     </ul>
   )
 }
+
+export { FileFolder }

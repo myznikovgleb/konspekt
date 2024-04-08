@@ -1,3 +1,3 @@
-export * from './FileFolder'
-export * from './FileIcon'
-export * from './FileViewer'
+export * from './file-folder'
+export * from './file-icon'
+export * from './file-viewer'

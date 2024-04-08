@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { Layout } from '@/shared/ui'
 
-export const Welcome = () => {
+const _ = () => {
   const path = `/folder`
 
   return (
@@ -13,3 +13,5 @@ export const Welcome = () => {
     </Layout>
   )
 }
+
+export { _ }

@@ -1,10 +1,8 @@
 import { data } from './data'
 
-import type { File } from '@/entities/file/types'
+import type { File } from '@/entities/file'
 
-export type Status = 'Pending' | 'Fulfilled' | 'Rejected'
-
-export const client: {
+const client: {
   delay: number
   data: File[]
   get: () => Promise<File[]>
@@ -19,3 +17,5 @@ export const client: {
     })
   },
 }
+
+export { client }
