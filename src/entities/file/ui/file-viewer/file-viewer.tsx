@@ -41,8 +41,8 @@ const FileViewer = (props: FileViewerProps) => {
         <h2 className="px-4 font-semibold text-primary-content md:text-lg">
           {filename}
         </h2>
-        <Link to={path} className="rounded-full focus:ring-primary-content">
-          <span className="m-1 hidden h-4 w-4 rounded-full bg-primary-content md:block" />
+        <Link to={path} className="rounded-full focus:ring-base-100">
+          <span className="m-1 hidden h-4 w-4 rounded-full bg-base-100 md:block" />
           <ChevronLeftIcon className="block h-8 w-8 text-primary-content md:hidden" />
         </Link>
       </div>
