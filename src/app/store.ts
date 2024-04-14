@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { fileSlice } from '../entities/file/model'
+import { fileSlice } from '@/entities/file'
 
 export const store = configureStore({
   reducer: {

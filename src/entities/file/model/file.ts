@@ -4,10 +4,9 @@ import {
   createEntityAdapter,
 } from '@reduxjs/toolkit'
 
-import { client } from '@/shared/api/client'
+import { client } from '@/shared/api'
 
-import type { File } from '@/entities/file/types'
-import type { Status } from '@/shared/api'
+import type { File, Status } from '@/shared/api'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 const fileAdapter = createEntityAdapter<File>({
@@ -18,7 +17,7 @@ const initialState = fileAdapter.getInitialState<{ status: Status }>({
   status: 'pending',
 })
 
-export const fileSlice = buildCreateSlice({
+const fileSlice = buildCreateSlice({
   creators: { asyncThunk: asyncThunkCreator },
 })({
   name: 'files',
@@ -52,3 +51,5 @@ export const fileSlice = buildCreateSlice({
     selectStatus: (state) => state.status,
   },
 })
+
+export { fileSlice }

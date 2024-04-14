@@ -1,18 +1,16 @@
-import { data } from './data'
+import { payload } from '../model'
 
-import type { File } from '@/entities/file'
+import type { File } from '../model'
 
 const client: {
   delay: number
-  data: File[]
   get: () => Promise<File[]>
 } = {
-  delay: 2000,
-  data: data,
+  delay: 1000,
   get: function () {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(this.data)
+        resolve(payload)
       }, this.delay)
     })
   },

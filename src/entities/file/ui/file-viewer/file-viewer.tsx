@@ -2,13 +2,12 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 
 import { useStoreDispatch, useStoreSelector } from '@/app/hooks'
-import { fileSlice } from '@/entities/file/model'
 
-import type { File } from '@/entities/file/types'
+import { fileSlice } from '../../model'
 
-type FileViewerProps = {
-  id: string
-}
+import type { File } from '@/shared/api'
+
+type FileViewerProps = Pick<File, 'id'>
 
 const FileViewer = (props: FileViewerProps) => {
   const { id } = props
@@ -22,6 +21,7 @@ const FileViewer = (props: FileViewerProps) => {
 
   const onChange = (args: Pick<File, 'content' | 'filename'>) => {
     const { content, filename } = args
+
     dispatch(
       fileSlice.actions.setOne({
         id: id,

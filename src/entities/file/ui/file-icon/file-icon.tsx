@@ -1,7 +1,7 @@
 import { BookOpenIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 
-import type { File } from '@/entities/file/types'
+import type { File } from '@/shared/api'
 
 type FileIconProps = Pick<File, 'filename' | 'id'>
 

@@ -1,6 +1,6 @@
-import { FileIcon } from '@/entities/file/ui'
+import { FileIcon } from '../file-icon'
 
-import type { File } from '@/entities/file/types'
+import type { File } from '@/shared/api'
 
 type FileFolderProps = { files: File[] }
 

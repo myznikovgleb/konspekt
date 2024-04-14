@@ -1,1 +1,1 @@
-export * from './file-slice'
+export * from './file'
