@@ -16,8 +16,10 @@ const FileViewerHead = (props: FileViewerHeadProps) => {
         {filename}
       </h2>
       <Link to={path} className="rounded-full focus:ring-base-100">
-        <span className="m-1 hidden h-4 w-4 rounded-full bg-base-100 md:block" />
-        <ChevronLeftIcon className="block h-8 w-8 text-primary-content md:hidden" />
+        <div className="hidden size-5 items-center justify-center md:flex">
+          <div className="size-4 rounded-full bg-base-100 duration-150 ease-in hover:size-5" />
+        </div>
+        <ChevronLeftIcon className="block size-8 text-primary-content md:hidden" />
       </Link>
     </div>
   )
