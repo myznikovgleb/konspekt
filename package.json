@@ -10,14 +10,6 @@
     "preview": "vite preview",
     "prepare": "husky"
   },
-  "lint-staged": {
-    "./src/**/*.ts?(x)": [
-      "tsc --noEmit",
-      "eslint --cache --fix",
-      "prettier --write"
-    ],
-    "./src/**/*.css": "prettier --write"
-  },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@reduxjs/toolkit": "^2.2.3",
@@ -46,7 +38,7 @@
     "postcss": "^8.4.31",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.3.5",
+    "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   }
