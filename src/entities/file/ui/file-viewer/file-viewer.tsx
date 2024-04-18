@@ -1,4 +1,4 @@
-import { useStoreDispatch, useStoreSelector } from '@/app/hooks'
+import { useStoreDispatch, useStoreSelector } from '@/shared/utils'
 
 import { fileSlice } from '../../model'
 
