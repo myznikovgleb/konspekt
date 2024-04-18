@@ -16,7 +16,7 @@ const FileIcon = (props: FileIconProps) => {
       className="flex w-full cursor-pointer flex-row items-center gap-8 rounded-xl px-4 py-2 md:w-32 md:flex-col md:gap-2 md:p-4 md:hover:bg-base-200/50"
     >
       <div className="rounded-xl bg-base-200 p-4">
-        <BookOpenIcon className="h-8 w-8" />
+        <BookOpenIcon className="size-8" />
       </div>
       <div className="text-lg font-semibold">{filename}</div>
     </Link>
