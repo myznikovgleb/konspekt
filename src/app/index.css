@@ -20,9 +20,3 @@
     @apply focus-within:outline-none focus-within:ring-2 focus-within:ring-primary;
   }
 }
-
-.root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
