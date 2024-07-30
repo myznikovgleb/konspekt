@@ -12,10 +12,12 @@ interface MenubarCompleteProps {
 const MenubarComplete = (props: MenubarCompleteProps) => {
   const { onAddOne } = props
 
+  const path = '/'
+
   return (
     <div className="navbar w-screen bg-base-200/50 shadow-lg shadow-base-200">
       <div className="navbar-start gap-8">
-        <Link to={'/'} className="btn btn-ghost btn-lg">
+        <Link to={path} className="btn btn-ghost btn-lg">
           <Squares2X2Icon className="size-6" />
         </Link>
         <div className="flex items-center justify-start gap-2">
