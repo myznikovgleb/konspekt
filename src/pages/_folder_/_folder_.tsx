@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 
 import { fileSlice, FileFolder } from '@/entities/file'
+import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
 import { Layout, Spinner } from '@/shared/ui'
-import { useStoreDispatch, useStoreSelector } from '@/shared/utils'
 import { Menubar } from '@/widgets/menubar'
 
 const _folder_ = () => {

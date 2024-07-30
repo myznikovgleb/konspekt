@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid'
 import { useNavigate } from 'react-router-dom'
 
 import { fileSlice } from '@/entities/file'
-import { useStoreDispatch } from '@/shared/utils'
+import { useStoreDispatch } from '@/shared/lib'
 
 import { MenubarComplete } from '../menubar-complete'
 import { MenubarSplit } from '../menubar-split'
