@@ -4,12 +4,14 @@
 
 @layer base {
   a,
+  button,
   textarea {
     appearance: none;
     -webkit-appearance: none !important;
   }
 
   a,
+  button,
   textarea {
     @apply focus:outline-none focus:ring-2 focus:ring-primary;
   }
@@ -17,10 +19,4 @@
   form {
     @apply focus-within:outline-none focus-within:ring-2 focus-within:ring-primary;
   }
-}
-
-.root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

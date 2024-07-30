@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 
-import { useStoreDispatch, useStoreSelector } from '@/app/hooks'
 import { fileSlice, FileFolder } from '@/entities/file'
+import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
 import { Layout, Spinner } from '@/shared/ui'
+import { Menubar } from '@/widgets/menubar'
 
 const _folder_ = () => {
   const dispatch = useStoreDispatch()
@@ -19,7 +20,16 @@ const _folder_ = () => {
   }, [isPending, dispatch])
 
   return (
-    <Layout>{isPending ? <Spinner /> : <FileFolder files={files} />}</Layout>
+    <Layout>
+      {isPending ? (
+        <Spinner />
+      ) : (
+        <>
+          <Menubar />
+          <FileFolder files={files} />
+        </>
+      )}
+    </Layout>
   )
 }
 

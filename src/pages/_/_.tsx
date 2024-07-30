@@ -20,7 +20,7 @@ const _ = () => {
   return (
     <Layout>
       <Link ref={refLink} to={path} className="btn btn-primary btn-lg btn-wide">
-        <ChevronRightIcon className="h-8 w-8" />
+        <ChevronRightIcon className="size-8" />
         <span>run konspekt</span>
       </Link>
     </Layout>

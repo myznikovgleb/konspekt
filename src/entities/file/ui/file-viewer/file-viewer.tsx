@@ -1,4 +1,4 @@
-import { useStoreDispatch, useStoreSelector } from '@/app/hooks'
+import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
 
 import { fileSlice } from '../../model'
 
@@ -23,7 +23,7 @@ const FileViewer = (props: FileViewerProps) => {
     const { content: nextContent } = args
 
     dispatch(
-      fileSlice.actions.setOne({
+      fileSlice.actions.updateOne({
         id,
         content: nextContent,
         filename,

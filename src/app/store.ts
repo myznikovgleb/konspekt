@@ -7,6 +7,3 @@ export const store = configureStore({
     files: fileSlice.reducer,
   },
 })
-
-export type StoreDispatch = typeof store.dispatch
-export type StoreState = ReturnType<typeof store.getState>
