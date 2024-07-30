@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { fileSlice, FileFolder } from '@/entities/file'
 import { Layout, Spinner } from '@/shared/ui'
 import { useStoreDispatch, useStoreSelector } from '@/shared/utils'
-import { Menubar } from '@/widgets/menu'
+import { Menubar } from '@/widgets/menubar'
 
 const _folder_ = () => {
   const dispatch = useStoreDispatch()

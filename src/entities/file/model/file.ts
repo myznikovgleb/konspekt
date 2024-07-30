@@ -6,12 +6,12 @@ import {
 
 import { client } from '@/shared/api'
 
+import { generateFile } from '../lib'
+
 import type { File, Status } from '@/shared/api'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-const fileAdapter = createEntityAdapter<File>({
-  sortComparer: (a, b) => a.date - b.date,
-})
+const fileAdapter = createEntityAdapter<File>()
 
 const initialState = fileAdapter.getInitialState<{ status: Status }>({
   status: 'pending',
@@ -24,8 +24,35 @@ const fileSlice = buildCreateSlice({
   initialState,
 
   reducers: (create) => ({
-    setOne: create.reducer((state, action: PayloadAction<File>) => {
-      fileAdapter.setOne(state, action)
+    addOne: create.reducer(
+      (
+        state,
+        action: PayloadAction<Partial<Pick<File, 'id' | 'filename'>>>
+      ) => {
+        const file = generateFile(action.payload)
+
+        const [name, extension] = file.filename.split('.')
+
+        const filenames = fileAdapter
+          .getSelectors()
+          .selectAll(state)
+          .map(({ filename }) => filename)
+
+        for (
+          let i = 1;
+          filenames.some((filename) => filename === file.filename);
+          i++
+        ) {
+          file.filename = `${name}-${i}.${extension}`
+        }
+
+        fileAdapter.addOne(state, { ...action, payload: file })
+      }
+    ),
+    updateOne: create.reducer((state, action: PayloadAction<File>) => {
+      const { id, ...changes } = action.payload
+
+      fileAdapter.updateOne(state, { id, changes })
     }),
 
     fetch: create.asyncThunk(
@@ -39,7 +66,7 @@ const fileSlice = buildCreateSlice({
         },
         fulfilled: (state, action: PayloadAction<File[]>) => {
           state.status = 'fulfilled'
-          fileAdapter.upsertMany(state, action.payload)
+          fileAdapter.setAll(state, action.payload)
         },
       }
     ),

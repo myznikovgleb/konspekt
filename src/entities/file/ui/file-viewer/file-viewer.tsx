@@ -23,7 +23,7 @@ const FileViewer = (props: FileViewerProps) => {
     const { content: nextContent } = args
 
     dispatch(
-      fileSlice.actions.setOne({
+      fileSlice.actions.updateOne({
         id,
         content: nextContent,
         filename,
