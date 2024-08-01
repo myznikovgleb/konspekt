@@ -49,11 +49,18 @@ const fileSlice = buildCreateSlice({
         fileAdapter.addOne(state, { ...action, payload: file })
       }
     ),
-    updateOne: create.reducer((state, action: PayloadAction<File>) => {
-      const { id, ...changes } = action.payload
+    removeOne: create.reducer(
+      (state, action: PayloadAction<Pick<File, 'id'>>) => {
+        fileAdapter.removeOne(state, action.payload.id)
+      }
+    ),
+    updateOne: create.reducer(
+      (state, action: PayloadAction<Pick<File, 'id'> & Partial<File>>) => {
+        const { id, ...changes } = action.payload
 
-      fileAdapter.updateOne(state, { id, changes })
-    }),
+        fileAdapter.updateOne(state, { id, changes })
+      }
+    ),
 
     fetch: create.asyncThunk(
       async () => {
