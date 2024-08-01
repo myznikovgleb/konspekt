@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid'
 
+import { Permission } from '@/shared/api'
+
 import type { File } from '@/shared/api'
 
 const generateFile = (
@@ -12,6 +14,7 @@ const generateFile = (
     filename: filename || 'konspekt.md',
     content: '',
     date: Date.now().valueOf(),
+    permission: Permission.Write,
   }
 }
 
