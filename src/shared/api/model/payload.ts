@@ -5,12 +5,18 @@ enum Permission {
   Write,
 }
 
+type Position = {
+  row: number
+  col: number
+}
+
 type File = {
   id: string
   filename: string
   date: number
   content: string
   permission: Permission
+  position: Position
 }
 
 const contentReadme = `How to start?
@@ -28,6 +34,7 @@ const payload: File[] = [
     date: Date.now().valueOf(),
     content: contentReadme,
     permission: Permission.Read,
+    position: { row: 0, col: 0 },
   },
   {
     id: nanoid(),
@@ -35,9 +42,10 @@ const payload: File[] = [
     date: Date.now().valueOf(),
     content: contentKonspekt,
     permission: Permission.Write,
+    position: { row: 0, col: 1 },
   },
 ]
 
-export type { File }
+export type { File, Position }
 
 export { payload, Permission }

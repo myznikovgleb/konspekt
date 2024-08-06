@@ -13,10 +13,13 @@ import { FileContext } from '../file-context'
 import type { File } from '@/shared/api'
 import type { MouseEvent, PointerEvent } from 'react'
 
-interface FileIconProps extends Pick<File, 'filename' | 'id' | 'permission'> {}
+interface FileIconProps extends Pick<File, 'filename' | 'id' | 'permission'> {
+  index: number
+  onAfterRemove: (indexRemoved: number) => void
+}
 
 const FileIcon = (props: FileIconProps) => {
-  const { filename, id, permission } = props
+  const { filename, id, permission, index, onAfterRemove } = props
 
   const dispatch = useStoreDispatch()
   const navigate = useNavigate()
@@ -64,6 +67,8 @@ const FileIcon = (props: FileIconProps) => {
 
   const onRemove = () => {
     dispatch(fileSlice.actions.removeOne({ id }))
+
+    onAfterRemove(index)
   }
 
   const isWriteForbidden = permission !== Permission.Write
@@ -82,12 +87,12 @@ const FileIcon = (props: FileIconProps) => {
           onClick={onClick}
           onDoubleClick={onOpen}
           onContextMenu={onContextMenu}
-          className="flex w-full cursor-pointer select-none flex-row items-center gap-8 rounded-xl px-4 py-2 md:w-32 md:flex-col md:gap-2 md:px-2 md:py-4 md:hover:bg-base-200/50"
+          className="flex size-28 cursor-pointer select-none flex-col items-center gap-2 rounded-xl p-2 hover:bg-base-200"
         >
-          <div className="rounded-xl bg-base-200 p-4">
+          <div className="rounded-xl bg-base-300 p-4">
             <BookOpenIcon className="size-8" />
           </div>
-          <div className="w-full truncate text-center text-lg font-semibold">
+          <div className="w-full truncate text-center text-base font-semibold">
             {filename}
           </div>
         </button>

@@ -11,6 +11,10 @@ import { generateFile } from '../lib'
 import type { File, Status } from '@/shared/api'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+const SIZE_ICON = 112
+const COL_NUMBER = 3
+const ROW_NUMBER = 5
+
 const fileAdapter = createEntityAdapter<File>()
 
 const initialState = fileAdapter.getInitialState<{ status: Status }>({
@@ -29,22 +33,13 @@ const fileSlice = buildCreateSlice({
         state,
         action: PayloadAction<Partial<Pick<File, 'id' | 'filename'>>>
       ) => {
-        const file = generateFile(action.payload)
+        const files = fileAdapter.getSelectors().selectAll(state)
 
-        const [name, extension] = file.filename.split('.')
+        const filenames = files.map(({ filename }) => filename)
 
-        const filenames = fileAdapter
-          .getSelectors()
-          .selectAll(state)
-          .map(({ filename }) => filename)
+        const positions = files.map(({ position }) => position)
 
-        for (
-          let i = 1;
-          filenames.some((filename) => filename === file.filename);
-          i++
-        ) {
-          file.filename = `${name}-${i}.${extension}`
-        }
+        const file = generateFile(action.payload, filenames, positions)
 
         fileAdapter.addOne(state, { ...action, payload: file })
       }
@@ -86,4 +81,4 @@ const fileSlice = buildCreateSlice({
   },
 })
 
-export { fileSlice }
+export { fileSlice, SIZE_ICON, COL_NUMBER, ROW_NUMBER }

@@ -26,7 +26,6 @@ const FileViewer = (props: FileViewerProps) => {
       fileSlice.actions.updateOne({
         id,
         content: nextContent,
-        filename,
         date: Date.now().valueOf(),
       })
     )
