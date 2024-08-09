@@ -6,9 +6,10 @@ import { clamp } from 'lodash'
 import { useRef, useState } from 'react'
 import { match } from 'ts-pattern'
 
-import { useStoreDispatch } from '@/shared/lib'
+import { FILE_ICON_SIZE } from '@/shared/config'
+import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
 
-import { fileSlice, SIZE_ICON, ROW_NUMBER, COL_NUMBER } from '../../model'
+import { fileSlice } from '../../model'
 import { FileContext } from '../file-context'
 
 import type { File, Position } from '@/shared/api'
@@ -29,16 +30,28 @@ enum IconState {
 const LONG_PRESS_DELAY_MS = 500
 
 const configurationFn = (
-  { row, col }: Position,
+  position: Position,
+  positionLimit: Position,
   active = false,
   x = 0,
   y = 0
 ) => {
   return () => {
+    const { col, row } = position
+    const { col: colLimit, row: rowLimit } = positionLimit
+
     return active
       ? {
-          x: clamp(col * SIZE_ICON + x, 0, (COL_NUMBER - 1) * SIZE_ICON),
-          y: clamp(row * SIZE_ICON + y, 0, (ROW_NUMBER - 1) * SIZE_ICON),
+          x: clamp(
+            col * FILE_ICON_SIZE + x,
+            0,
+            (colLimit - 1) * FILE_ICON_SIZE
+          ),
+          y: clamp(
+            row * FILE_ICON_SIZE + y,
+            0,
+            (rowLimit - 1) * FILE_ICON_SIZE
+          ),
           scale: 1.1,
           zIndex: 10,
           immediate: (key: string) => key === 'zIndex',
@@ -46,8 +59,8 @@ const configurationFn = (
             key === 'x' || key === 'y' ? config.stiff : config.default,
         }
       : {
-          x: col * SIZE_ICON,
-          y: row * SIZE_ICON,
+          x: col * FILE_ICON_SIZE,
+          y: row * FILE_ICON_SIZE,
           scale: 1,
           zIndex: 0,
           immediate: false,
@@ -57,16 +70,22 @@ const configurationFn = (
 
 const FileIcon = (props: FileIconProps) => {
   const { filename, id, position, occupiedPositions, onOpen, onRemove } = props
-  const { row, col } = position
 
   const dispatch = useStoreDispatch()
+
+  const positionLimit = useStoreSelector(
+    fileSlice.selectors.selectPositionLimit
+  )
 
   const [iconState, setIconState] = useState<IconState>(IconState.Idle)
 
   const refTrigger = useRef<HTMLButtonElement>(null)
   const refTimer = useRef<ReturnType<typeof setTimeout>>()
 
-  const [spring, api] = useSpring(configurationFn(position), [position])
+  const [spring, api] = useSpring(configurationFn(position, positionLimit), [
+    position,
+    positionLimit,
+  ])
 
   const bind = useGesture(
     {
@@ -84,27 +103,30 @@ const FileIcon = (props: FileIconProps) => {
           })
 
         if (!active) {
+          const { col, row } = position
+          const { col: colLimit, row: rowLimit } = positionLimit
+
           const positionNext: Position = {
-            row: clamp(
-              Math.round((row * SIZE_ICON + y) / SIZE_ICON),
-              0,
-              ROW_NUMBER - 1
-            ),
             col: clamp(
-              Math.round((col * SIZE_ICON + x) / SIZE_ICON),
+              Math.round((col * FILE_ICON_SIZE + x) / FILE_ICON_SIZE),
               0,
-              COL_NUMBER - 1
+              colLimit - 1
+            ),
+            row: clamp(
+              Math.round((row * FILE_ICON_SIZE + y) / FILE_ICON_SIZE),
+              0,
+              rowLimit - 1
             ),
           }
 
           const isUpdateRequired = !occupiedPositions.some(
             (occupiedPosition) =>
-              occupiedPosition.row === positionNext.row &&
-              occupiedPosition.col === positionNext.col
+              occupiedPosition.col === positionNext.col &&
+              occupiedPosition.row === positionNext.row
           )
 
           if (isUpdateRequired) {
-            api.start(configurationFn(positionNext, false, x, y))
+            api.start(configurationFn(positionNext, positionLimit, false, x, y))
 
             dispatch(
               fileSlice.actions.updateOne({ id, position: positionNext })
@@ -114,7 +136,7 @@ const FileIcon = (props: FileIconProps) => {
           }
         }
 
-        api.start(configurationFn(position, active, x, y))
+        api.start(configurationFn(position, positionLimit, active, x, y))
       },
       onPointerDown: () => {
         refTrigger.current?.focus()

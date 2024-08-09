@@ -6,19 +6,19 @@ import {
 
 import { client } from '@/shared/api'
 
-import { generateFile } from '../lib'
+import { generateFile, positionLimit } from '../lib'
 
-import type { File, Status } from '@/shared/api'
+import type { File, Position, Status } from '@/shared/api'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
-const SIZE_ICON = 112
-const COL_NUMBER = 3
-const ROW_NUMBER = 5
 
 const fileAdapter = createEntityAdapter<File>()
 
-const initialState = fileAdapter.getInitialState<{ status: Status }>({
+const initialState = fileAdapter.getInitialState<{
+  status: Status
+  positionLimit: Position
+}>({
   status: 'pending',
+  positionLimit: { col: 0, row: 0 },
 })
 
 const fileSlice = buildCreateSlice({
@@ -39,7 +39,12 @@ const fileSlice = buildCreateSlice({
 
         const positions = files.map(({ position }) => position)
 
-        const file = generateFile(action.payload, filenames, positions)
+        const file = generateFile(
+          action.payload,
+          filenames,
+          positions,
+          state.positionLimit
+        )
 
         fileAdapter.addOne(state, { ...action, payload: file })
       }
@@ -54,6 +59,12 @@ const fileSlice = buildCreateSlice({
         const { id, ...changes } = action.payload
 
         fileAdapter.updateOne(state, { id, changes })
+      }
+    ),
+
+    setPositionLimit: create.reducer(
+      (state, action: PayloadAction<{ height: number; width: number }>) => {
+        state.positionLimit = positionLimit(action.payload)
       }
     ),
 
@@ -78,7 +89,8 @@ const fileSlice = buildCreateSlice({
     ...fileAdapter.getSelectors(),
 
     selectStatus: (state) => state.status,
+    selectPositionLimit: (state) => state.positionLimit,
   },
 })
 
-export { fileSlice, SIZE_ICON, COL_NUMBER, ROW_NUMBER }
+export { fileSlice }

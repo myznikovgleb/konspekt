@@ -1,7 +1,8 @@
-import { useMemo } from 'react'
+import { useLayoutEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Permission } from '@/shared/api'
+import { FILE_FOLDER_PADDING, px } from '@/shared/config'
 import { useStoreDispatch } from '@/shared/lib'
 
 import { fileSlice } from '../../model'
@@ -19,6 +20,25 @@ const FileFolder = (props: FileFolderProps) => {
   const dispatch = useStoreDispatch()
   const navigate = useNavigate()
 
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      dispatch(
+        fileSlice.actions.setPositionLimit({
+          height: window.innerHeight,
+          width: window.innerWidth,
+        })
+      )
+    }
+
+    window && handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [dispatch])
+
   const occupiedPositions = useMemo(
     () => files.map(({ position }) => position),
     [files]
@@ -35,7 +55,10 @@ const FileFolder = (props: FileFolderProps) => {
   }
 
   return (
-    <ul className="relative size-full p-5">
+    <ul
+      className="relative size-full"
+      style={{ padding: px(FILE_FOLDER_PADDING) }}
+    >
       {files.map(({ id, filename, permission, position }) => (
         <FileIcon
           key={id}

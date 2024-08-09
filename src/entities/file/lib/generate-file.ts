@@ -2,14 +2,13 @@ import { nanoid } from 'nanoid'
 
 import { Permission } from '@/shared/api'
 
-import { COL_NUMBER, ROW_NUMBER } from '../model'
-
 import type { File, Position } from '@/shared/api'
 
 const generateFile = (
   payload: Partial<Pick<File, 'id' | 'filename'>>,
   occupiedFilenames: Array<File['filename']>,
-  occupiedPositions: Array<Position>
+  occupiedPositions: Array<Position>,
+  positionLimit: Position
 ): File => {
   const { id = nanoid(), filename = 'konspekt.md' } = payload
 
@@ -19,27 +18,32 @@ const generateFile = (
     content: '',
     date: Date.now().valueOf(),
     permission: Permission.Write,
-    position: generatePosition(occupiedPositions),
+    position: generatePosition(occupiedPositions, positionLimit),
   }
 
   return file
 }
 
-const generatePosition = (occupiedPositions: Array<Position>): Position => {
-  for (let row = 0; row < ROW_NUMBER; row++) {
-    for (let col = 0; col < COL_NUMBER; col++) {
+const generatePosition = (
+  occupiedPositions: Array<Position>,
+  positionLimit: Position
+): Position => {
+  const { col: colLimit, row: rowLimit } = positionLimit
+
+  for (let row = 0; row < rowLimit; row++) {
+    for (let col = 0; col < colLimit; col++) {
       if (
         !occupiedPositions.some(
           (occupiedPosition) =>
-            occupiedPosition.row === row && occupiedPosition.col === col
+            occupiedPosition.col === col && occupiedPosition.row === row
         )
       ) {
-        return { row, col }
+        return { col, row }
       }
     }
   }
 
-  return { row: ROW_NUMBER, col: COL_NUMBER }
+  return { col: colLimit, row: rowLimit }
 }
 
 const generateFilename = (

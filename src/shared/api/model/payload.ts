@@ -6,8 +6,8 @@ enum Permission {
 }
 
 type Position = {
-  row: number
   col: number
+  row: number
 }
 
 type File = {
