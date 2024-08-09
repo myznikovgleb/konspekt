@@ -4,10 +4,8 @@ import { animated, config, useSpring } from '@react-spring/web'
 import { useGesture } from '@use-gesture/react'
 import { clamp } from 'lodash'
 import { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { match } from 'ts-pattern'
 
-import { Permission } from '@/shared/api'
 import { useStoreDispatch } from '@/shared/lib'
 
 import { fileSlice, SIZE_ICON, ROW_NUMBER, COL_NUMBER } from '../../model'
@@ -16,9 +14,10 @@ import { FileContext } from '../file-context'
 import type { File, Position } from '@/shared/api'
 import type { MouseEvent, PointerEvent } from 'react'
 
-interface FileIconProps
-  extends Pick<File, 'filename' | 'id' | 'permission' | 'position'> {
+interface FileIconProps extends Pick<File, 'filename' | 'id' | 'position'> {
   occupiedPositions: Array<Position>
+  onOpen: () => void
+  onRemove?: () => void
 }
 
 enum IconState {
@@ -57,11 +56,10 @@ const configurationFn = (
 }
 
 const FileIcon = (props: FileIconProps) => {
-  const { filename, id, permission, position, occupiedPositions } = props
+  const { filename, id, position, occupiedPositions, onOpen, onRemove } = props
   const { row, col } = position
 
   const dispatch = useStoreDispatch()
-  const navigate = useNavigate()
 
   const [iconState, setIconState] = useState<IconState>(IconState.Idle)
 
@@ -161,22 +159,10 @@ const FileIcon = (props: FileIconProps) => {
     }
   }
 
-  const onOpen = () => {
-    const path = `/viewer/${id}`
-
-    navigate(path)
-  }
-
-  const onRemove = () => {
-    dispatch(fileSlice.actions.removeOne({ id }))
-  }
-
+  const open = iconState === IconState.Opened
   const onOpenChange = (open: boolean) => {
     setIconState(open ? IconState.Opened : IconState.Idle)
   }
-
-  const open = iconState === IconState.Opened
-  const isWriteForbidden = permission !== Permission.Write
 
   return (
     <animated.li {...bind()} className="absolute touch-none" style={spring}>
@@ -199,10 +185,7 @@ const FileIcon = (props: FileIconProps) => {
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content>
-            <FileContext
-              onOpen={onOpen}
-              onRemove={isWriteForbidden ? undefined : onRemove}
-            />
+            <FileContext onOpen={onOpen} onRemove={onRemove} />
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>
