@@ -155,7 +155,7 @@ const FileIcon = (props: FileIconProps) => {
           .otherwise(() => {})
       },
     },
-    { drag: { filterTaps: true } }
+    { drag: { filterTaps: true, pointer: { keys: false } } }
   )
 
   const onContextMenu = (event: MouseEvent) => {
