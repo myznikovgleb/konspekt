@@ -11,7 +11,7 @@ const FileViewerCanvas = (props: FileViewerCanvasProps) => {
     <textarea
       value={content}
       onChange={(e) => onChange({ content: e.target.value })}
-      className="size-full resize-none overflow-hidden rounded-b-lg bg-base-100 p-8 md:text-lg"
+      className="h-[35vh] w-full resize-none overflow-hidden rounded-b-lg bg-base-100 p-8 md:h-[80vh] md:text-lg"
     />
   )
 }

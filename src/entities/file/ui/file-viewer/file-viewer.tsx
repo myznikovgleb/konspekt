@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom'
+
 import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
+import { Titlebar } from '@/shared/ui'
 
 import { fileSlice } from '../../model'
 
 import { FileViewerCanvas } from './file-viewer-canvas'
-import { FileViewerHead } from './file-viewer-head'
 
 import type { File } from '@/shared/api'
 
@@ -31,9 +33,13 @@ const FileViewer = (props: FileViewerProps) => {
     )
   }
 
+  const path = `/folder`
+
   return (
-    <form className="justify-top flex h-2/5 w-4/5 flex-col items-center rounded-lg md:h-4/5">
-      <FileViewerHead filename={filename} />
+    <form className="modal-box flex w-4/5 max-w-none scale-100 flex-col items-center p-0">
+      <Titlebar title={filename}>
+        <Link to={path} />
+      </Titlebar>
       <FileViewerCanvas content={content} onChange={onChange} />
     </form>
   )
