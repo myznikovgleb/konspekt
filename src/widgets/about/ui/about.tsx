@@ -17,7 +17,7 @@ const About = (props: AboutProps) => {
     <Dialog.Root>
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Content className="modal-box fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-0">
+        <Dialog.Content className="modal-box fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-100 p-0">
           <Titlebar>
             <Dialog.Close />
           </Titlebar>

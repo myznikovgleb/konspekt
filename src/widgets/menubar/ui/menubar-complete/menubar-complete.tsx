@@ -5,6 +5,8 @@ import {
 } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 
+import { MENUBAR_COMPLETE_HEIGHT, px } from '@/shared/config'
+
 import { About } from '../../../about'
 
 import { MenubarCompleteDropdown } from './menubar-complete-dropdown'
@@ -19,7 +21,10 @@ const MenubarComplete = (props: MenubarCompleteProps) => {
   const path = '/'
 
   return (
-    <div className="navbar w-screen bg-base-200/50 shadow-lg shadow-base-200">
+    <div
+      className="navbar w-screen bg-base-200/50 shadow-lg shadow-base-200"
+      style={{ height: px(MENUBAR_COMPLETE_HEIGHT) }}
+    >
       <div className="navbar-start gap-8">
         <Link to={path} className="btn btn-ghost btn-lg">
           <Squares2X2Icon className="size-6" />
@@ -39,10 +44,7 @@ const MenubarComplete = (props: MenubarCompleteProps) => {
           <MenubarCompleteDropdown heading="Help">
             <li>
               <About>
-                <button
-                  onClick={() => {}}
-                  className="flex items-center justify-start gap-4 text-base"
-                >
+                <button className="flex items-center justify-start gap-4 text-base">
                   <Square3Stack3DIcon className="size-6" />
                   <p>About</p>
                 </button>

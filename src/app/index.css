@@ -8,15 +8,11 @@
   textarea {
     appearance: none;
     -webkit-appearance: none !important;
+    outline: none;
   }
 
   a,
-  button,
-  textarea {
+  button {
     @apply focus:outline-none focus:ring-2 focus:ring-primary;
-  }
-
-  form {
-    @apply focus-within:outline-none focus-within:ring-2 focus-within:ring-primary;
   }
 }

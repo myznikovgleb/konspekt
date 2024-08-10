@@ -6,15 +6,19 @@ import {
 
 import { client } from '@/shared/api'
 
-import { generateFile } from '../lib'
+import { generateFile, positionLimit } from '../lib'
 
-import type { File, Status } from '@/shared/api'
+import type { File, Position, Status } from '@/shared/api'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 const fileAdapter = createEntityAdapter<File>()
 
-const initialState = fileAdapter.getInitialState<{ status: Status }>({
+const initialState = fileAdapter.getInitialState<{
+  status: Status
+  positionLimit: Position
+}>({
   status: 'pending',
+  positionLimit: { col: 0, row: 0 },
 })
 
 const fileSlice = buildCreateSlice({
@@ -29,22 +33,18 @@ const fileSlice = buildCreateSlice({
         state,
         action: PayloadAction<Partial<Pick<File, 'id' | 'filename'>>>
       ) => {
-        const file = generateFile(action.payload)
+        const files = fileAdapter.getSelectors().selectAll(state)
 
-        const [name, extension] = file.filename.split('.')
+        const filenames = files.map(({ filename }) => filename)
 
-        const filenames = fileAdapter
-          .getSelectors()
-          .selectAll(state)
-          .map(({ filename }) => filename)
+        const positions = files.map(({ position }) => position)
 
-        for (
-          let i = 1;
-          filenames.some((filename) => filename === file.filename);
-          i++
-        ) {
-          file.filename = `${name}-${i}.${extension}`
-        }
+        const file = generateFile(
+          action.payload,
+          filenames,
+          positions,
+          state.positionLimit
+        )
 
         fileAdapter.addOne(state, { ...action, payload: file })
       }
@@ -59,6 +59,12 @@ const fileSlice = buildCreateSlice({
         const { id, ...changes } = action.payload
 
         fileAdapter.updateOne(state, { id, changes })
+      }
+    ),
+
+    setPositionLimit: create.reducer(
+      (state, action: PayloadAction<{ height: number; width: number }>) => {
+        state.positionLimit = positionLimit(action.payload)
       }
     ),
 
@@ -83,6 +89,7 @@ const fileSlice = buildCreateSlice({
     ...fileAdapter.getSelectors(),
 
     selectStatus: (state) => state.status,
+    selectPositionLimit: (state) => state.positionLimit,
   },
 })
 
