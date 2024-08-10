@@ -54,6 +54,12 @@ const FileFolder = (props: FileFolderProps) => {
     dispatch(fileSlice.actions.removeOne({ id }))
   }
 
+  const onRename = (id: File['id']) => {
+    const path = `/viewer/${id}`
+
+    navigate(path)
+  }
+
   return (
     <ul
       className="relative size-full"
@@ -69,6 +75,9 @@ const FileFolder = (props: FileFolderProps) => {
           onOpen={() => onOpen(id)}
           onRemove={
             permission === Permission.Write ? () => onRemove(id) : undefined
+          }
+          onRename={
+            permission === Permission.Write ? () => onRename(id) : undefined
           }
         />
       ))}

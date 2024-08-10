@@ -19,6 +19,7 @@ interface FileIconProps extends Pick<File, 'filename' | 'id' | 'position'> {
   occupiedPositions: Array<Position>
   onOpen: () => void
   onRemove?: () => void
+  onRename?: () => void
 }
 
 enum IconState {
@@ -69,7 +70,15 @@ const configurationFn = (
 }
 
 const FileIcon = (props: FileIconProps) => {
-  const { filename, id, position, occupiedPositions, onOpen, onRemove } = props
+  const {
+    filename,
+    id,
+    position,
+    occupiedPositions,
+    onOpen,
+    onRemove,
+    onRename,
+  } = props
 
   const dispatch = useStoreDispatch()
 
@@ -207,7 +216,11 @@ const FileIcon = (props: FileIconProps) => {
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content>
-            <FileContext onOpen={onOpen} onRemove={onRemove} />
+            <FileContext
+              onOpen={onOpen}
+              onRemove={onRemove}
+              onRename={onRename}
+            />
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>

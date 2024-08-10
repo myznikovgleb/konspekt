@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import { Permission } from '@/shared/api'
 import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
 import { Titlebar } from '@/shared/ui'
 
@@ -19,11 +20,9 @@ const FileViewer = (props: FileViewerProps) => {
   const file = useStoreSelector((state) =>
     fileSlice.selectors.selectById(state, id)
   )
-  const { content, filename } = file
+  const { content, filename, permission } = file
 
-  const onChange = (args: Pick<File, 'content'>) => {
-    const { content: nextContent } = args
-
+  const onChangeContent = (nextContent: File['content']) => {
     dispatch(
       fileSlice.actions.updateOne({
         id,
@@ -33,14 +32,29 @@ const FileViewer = (props: FileViewerProps) => {
     )
   }
 
+  const onChangeFilename = (nextFilename: File['filename']) => {
+    dispatch(
+      fileSlice.actions.updateOne({
+        id,
+        filename: nextFilename,
+        date: Date.now().valueOf(),
+      })
+    )
+  }
+
   const path = `/folder`
 
   return (
     <form className="modal-box flex w-4/5 max-w-none scale-100 flex-col items-center p-0">
-      <Titlebar title={filename}>
+      <Titlebar
+        title={filename}
+        onChangeTitle={
+          permission === Permission.Write ? onChangeFilename : undefined
+        }
+      >
         <Link to={path} />
       </Titlebar>
-      <FileViewerCanvas content={content} onChange={onChange} />
+      <FileViewerCanvas content={content} onChangeContent={onChangeContent} />
     </form>
   )
 }

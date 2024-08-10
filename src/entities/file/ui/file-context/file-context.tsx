@@ -1,12 +1,13 @@
-import { DocumentIcon, TrashIcon } from '@heroicons/react/24/solid'
+import { DocumentIcon, PencilIcon, TrashIcon } from '@heroicons/react/24/solid'
 
 interface FileContextProps {
   onOpen?: () => void
   onRemove?: () => void
+  onRename?: () => void
 }
 
 const FileContext = (props: FileContextProps) => {
-  const { onOpen, onRemove } = props
+  const { onOpen, onRemove, onRename } = props
 
   return (
     <ul className="menu gap-1 rounded-box bg-base-100 shadow-lg shadow-base-200">
@@ -18,6 +19,17 @@ const FileContext = (props: FileContextProps) => {
           >
             <DocumentIcon className="size-6" />
             <p>Open file</p>
+          </button>
+        </li>
+      )}
+      {onRename && (
+        <li className="group rounded-none first:rounded-t-lg last:rounded-b-lg">
+          <button
+            onClick={onRename}
+            className="flex items-center justify-start gap-4 rounded-none text-base group-first:rounded-t-lg group-last:rounded-b-lg"
+          >
+            <PencilIcon className="size-6" />
+            <p>Rename file</p>
           </button>
         </li>
       )}
