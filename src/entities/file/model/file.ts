@@ -2,6 +2,7 @@ import {
   asyncThunkCreator,
   buildCreateSlice,
   createEntityAdapter,
+  createSelector,
 } from '@reduxjs/toolkit'
 
 import { client } from '@/shared/api'
@@ -90,6 +91,20 @@ const fileSlice = buildCreateSlice({
 
     selectStatus: (state) => state.status,
     selectPositionLimit: (state) => state.positionLimit,
+    selectAllByFilename: createSelector(
+      [
+        fileAdapter.getSelectors().selectAll,
+        (_, searchString: string) => searchString.toLowerCase(),
+      ],
+      (files, searchString) =>
+        files
+          .filter((file) => file.filename.toLowerCase().includes(searchString))
+          .slice(0, 5)
+          .map((file) => ({
+            file,
+            index: file.filename.toLowerCase().indexOf(searchString),
+          }))
+    ),
   },
 })
 
