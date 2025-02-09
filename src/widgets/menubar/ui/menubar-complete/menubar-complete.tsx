@@ -1,4 +1,5 @@
 import {
+  CommandLineIcon,
   DocumentIcon,
   Square3Stack3DIcon,
   Squares2X2Icon,
@@ -8,6 +9,7 @@ import { Link } from 'react-router-dom'
 import { MENUBAR_COMPLETE_HEIGHT, px } from '@/shared/config'
 
 import { About } from '../../../about'
+import { CommandPalette } from '../../../command-palette'
 
 import { MenubarCompleteDropdown } from './menubar-complete-dropdown'
 
@@ -39,6 +41,16 @@ const MenubarComplete = (props: MenubarCompleteProps) => {
                 <DocumentIcon className="size-6" />
                 <p>New file</p>
               </button>
+            </li>
+          </MenubarCompleteDropdown>
+          <MenubarCompleteDropdown heading="View">
+            <li>
+              <CommandPalette rootedBy="complete">
+                <button className="flex items-center justify-start gap-4 text-base">
+                  <CommandLineIcon className="size-6" />
+                  <p>Command Palette</p>
+                </button>
+              </CommandPalette>
             </li>
           </MenubarCompleteDropdown>
           <MenubarCompleteDropdown heading="Help">

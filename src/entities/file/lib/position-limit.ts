@@ -15,7 +15,7 @@ const positionLimit = ({
   width: number
 }): Position => {
   const MENUBAR_HEIGHT =
-    width < SCREEN_MD ? MENUBAR_SPLIT_HEIGHT : MENUBAR_COMPLETE_HEIGHT
+    width < SCREEN_MD ? MENUBAR_SPLIT_HEIGHT * 2 : MENUBAR_COMPLETE_HEIGHT
 
   return {
     col: Math.max(
