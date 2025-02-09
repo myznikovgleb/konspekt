@@ -45,7 +45,7 @@ const MenubarComplete = (props: MenubarCompleteProps) => {
           </MenubarCompleteDropdown>
           <MenubarCompleteDropdown heading="View">
             <li>
-              <CommandPalette>
+              <CommandPalette rootedBy="complete">
                 <button className="flex items-center justify-start gap-4 text-base">
                   <CommandLineIcon className="size-6" />
                   <p>Command Palette</p>

@@ -1,8 +1,14 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { useState } from 'react'
+import { match } from 'ts-pattern'
 
 import { fileSlice } from '@/entities/file'
+import {
+  MENUBAR_COMPLETE_HEIGHT,
+  MENUBAR_SPLIT_HEIGHT,
+  px,
+} from '@/shared/config'
 import { useStoreSelector } from '@/shared/lib'
 
 import { CommandPaletteList } from './command-palette-list'
@@ -11,10 +17,11 @@ import type { ReactNode } from 'react'
 
 interface CommandPaletteProps {
   children: ReactNode
+  rootedBy: 'complete' | 'split'
 }
 
 const CommandPalette = (props: CommandPaletteProps) => {
-  const { children } = props
+  const { children, rootedBy } = props
 
   const [command, setCommand] = useState<string>('')
 
@@ -22,16 +29,22 @@ const CommandPalette = (props: CommandPaletteProps) => {
     fileSlice.selectors.selectAllByFilename(state, command)
   )
 
+  const top = match(rootedBy)
+    .with('complete', () => MENUBAR_COMPLETE_HEIGHT)
+    .with('split', () => MENUBAR_SPLIT_HEIGHT)
+    .exhaustive()
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Portal>
         <VisuallyHidden.Root>
-          <Dialog.Title>CommandPalette</Dialog.Title>
+          <Dialog.Title>Command Palette</Dialog.Title>
         </VisuallyHidden.Root>
         <Dialog.Content
           aria-describedby={undefined}
-          className="modal-box fixed left-1/2 top-[5%] -translate-x-1/2 scale-100 p-0"
+          className="modal-box fixed left-1/2 -translate-x-1/2 scale-100 p-0"
+          style={{ top: px(top) }}
         >
           <div className="card-body flex flex-col items-center gap-6">
             <input
