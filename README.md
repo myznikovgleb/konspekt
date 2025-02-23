@@ -1,14 +1,14 @@
-# Konspekt app
+# Konspekt App
 
-[Konspekt app](https://konspekt.vercel.app "Konspekt app") is a note-taking app significantly charged with magic.
+[Konspekt App](https://konspekt.vercel.app "Konspekt App") is a note-taking app significantly charged with magic.
 
 ## How to run
 
-Follow [link](https://konspekt.vercel.app "Run Konspekt app") to give a try.
+Follow [link](https://konspekt.vercel.app "Run Konspekt App") to give a try.
 
 ## How to use
 
-:hourglass: Documentation is on the way.
+:feather: Explore [Konspekt Docs](https://konspekt-docs.vercel.app "Explore Konspekt Docs") to learn more about Konspekt App.
 
 ## Tech details
 
