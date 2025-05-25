@@ -28,6 +28,7 @@
     "ts-pattern": "^5.2.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.7",
     "@types/lodash": "^4.17.7",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.37",
@@ -35,8 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "autoprefixer": "^10.4.16",
-    "daisyui": "^4.3.1",
+    "daisyui": "^5.0.37",
     "eslint": "^8.53.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
@@ -46,8 +46,8 @@
     "lint-staged": "^15.2.2",
     "postcss": "^8.4.31",
     "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.4.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.1.7",
     "typescript": "^5.2.2",
     "vite": "^6.2.3"
   }

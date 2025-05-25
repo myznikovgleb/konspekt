@@ -49,7 +49,7 @@ const CommandPalette = (props: CommandPaletteProps) => {
           <div className="card-body flex flex-col items-center gap-6">
             <input
               type="text"
-              className="input input-bordered h-8 w-full min-w-0 bg-base-200 text-sm focus-within:outline-0 focus:outline-none focus:ring-2 focus:ring-primary md:text-base"
+              className="input input-bordered bg-base-200 focus:ring-primary h-8 w-full min-w-0 text-sm focus-within:outline-0 focus:ring-2 focus:outline-hidden md:text-base"
               value={command}
               onChange={(e) => setCommand(e.target.value)}
               placeholder="Search files by name"

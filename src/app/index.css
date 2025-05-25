@@ -1,6 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin "daisyui" {
+  logs: false;
+}
+
+@plugin "daisyui/theme" {
+  name: 'light';
+  default: true;
+  --color-primary: #f59e0b;
+  --color-primary-content: #fafafa;
+  --color-base-100: #fafafa;
+  --color-base-200: #e5e5e5;
+  --color-base-300: #d4d4d4;
+  --color-base-content: #0a0a0a;
+}
+
+@plugin "daisyui/theme" {
+  name: 'dark';
+  prefersdark: true;
+  --color-primary: #fb923c;
+  --color-primary-content: #262626;
+  --color-base-100: #262626;
+  --color-base-200: #171717;
+  --color-base-300: #0a0a0a;
+  --color-base-content: #e5e5e5;
+}
 
 @layer base {
   a,
@@ -13,6 +37,6 @@
 
   a,
   button {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary;
+    @apply focus:ring-2 focus:outline-hidden;
   }
 }
