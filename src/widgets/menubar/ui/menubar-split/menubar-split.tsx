@@ -3,7 +3,7 @@ import {
   MagnifyingGlassIcon,
   PencilSquareIcon,
 } from '@heroicons/react/24/solid'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { MENUBAR_SPLIT_HEIGHT, px } from '@/shared/config'
 

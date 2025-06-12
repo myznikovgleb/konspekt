@@ -4,7 +4,7 @@ import {
   Square3Stack3DIcon,
   Squares2X2Icon,
 } from '@heroicons/react/24/solid'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { MENUBAR_COMPLETE_HEIGHT, px } from '@/shared/config'
 
@@ -24,7 +24,7 @@ const MenubarComplete = (props: MenubarCompleteProps) => {
 
   return (
     <div
-      className="navbar w-screen bg-base-200/50 shadow-lg shadow-base-200"
+      className="navbar bg-base-200/50 shadow-base-200 w-screen shadow-lg"
       style={{ height: px(MENUBAR_COMPLETE_HEIGHT) }}
     >
       <div className="navbar-start gap-8">

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router'
 
 import { FileViewer } from '@/entities/file'
 import { Layout } from '@/shared/ui'

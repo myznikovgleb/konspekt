@@ -15,7 +15,7 @@ const _folder_ = () => {
 
   useEffect(() => {
     if (isPending) {
-      dispatch(fileSlice.actions.fetch({}))
+      dispatch(fileSlice.actions.fetch())
     }
   }, [isPending, dispatch])
 

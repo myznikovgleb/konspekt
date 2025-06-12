@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { Layout } from '@/shared/ui'
 
