@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import { FileViewer } from '@/entities/file'
 import { Layout } from '@/shared/ui'
 
-const _viewer_ = () => {
+const Page_viewer_ = () => {
   const { id = '' } = useParams()
 
   return (
@@ -13,4 +13,4 @@ const _viewer_ = () => {
   )
 }
 
-export { _viewer_ }
+export { Page_viewer_ }

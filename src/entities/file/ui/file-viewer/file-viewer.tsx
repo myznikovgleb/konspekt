@@ -45,7 +45,7 @@ const FileViewer = (props: FileViewerProps) => {
   const path = `/folder`
 
   return (
-    <form className="modal-box flex w-4/5 max-w-none scale-100 flex-col items-center p-0">
+    <form className="flex w-4/5 max-w-none scale-100 flex-col items-center p-0">
       <Titlebar
         title={filename}
         onChangeTitle={

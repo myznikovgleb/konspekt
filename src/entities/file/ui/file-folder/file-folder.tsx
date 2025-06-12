@@ -30,7 +30,9 @@ const FileFolder = (props: FileFolderProps) => {
       )
     }
 
-    window && handleResize()
+    if (window) {
+      handleResize()
+    }
 
     window.addEventListener('resize', handleResize)
 

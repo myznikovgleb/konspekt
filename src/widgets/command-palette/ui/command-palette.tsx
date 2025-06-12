@@ -43,13 +43,13 @@ const CommandPalette = (props: CommandPaletteProps) => {
         </VisuallyHidden.Root>
         <Dialog.Content
           aria-describedby={undefined}
-          className="modal-box fixed left-1/2 -translate-x-1/2 scale-100 p-0"
+          className="fixed left-1/2 -translate-x-1/2 scale-100 p-0"
           style={{ top: px(top) }}
         >
-          <div className="card-body flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-6">
             <input
               type="text"
-              className="input input-bordered bg-base-200 focus:ring-primary h-8 w-full min-w-0 text-sm focus-within:outline-0 focus:ring-2 focus:outline-hidden md:text-base"
+              className="input input-bordered bg-base-200 h-8 w-full min-w-0 text-sm md:text-base"
               value={command}
               onChange={(e) => setCommand(e.target.value)}
               placeholder="Search files by name"

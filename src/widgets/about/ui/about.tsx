@@ -17,11 +17,11 @@ const About = (props: AboutProps) => {
     <Dialog.Root>
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Content className="modal-box fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-100 p-0">
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-100 p-0">
           <Titlebar>
             <Dialog.Close />
           </Titlebar>
-          <div className="card-body flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-6">
             <Dialog.Title className="text-xl font-semibold">
               Konspekt App
             </Dialog.Title>

@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 import { Layout } from '@/shared/ui'
 
-const _ = () => {
+const Page_ = () => {
   const refLink = useRef<HTMLAnchorElement>(null)
 
   const path = `/folder`
@@ -27,4 +27,4 @@ const _ = () => {
   )
 }
 
-export { _ }
+export { Page_ }

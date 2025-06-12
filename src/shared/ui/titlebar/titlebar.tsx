@@ -34,7 +34,7 @@ const Titlebar = (props: TitlebarProps) => {
       <div className="w-1/4" />
       <div className="w-1/2">
         {isStaticTitle && (
-          <div className="input input-bordered flex h-8 w-full items-center gap-2 focus-within:outline-0">
+          <div className="input input-bordered flex h-8 w-full items-center gap-2">
             <button
               onClick={onEditRequest}
               disabled={onChangeTitle === undefined}
@@ -48,7 +48,7 @@ const Titlebar = (props: TitlebarProps) => {
           </div>
         )}
         {isDynamicTitle && (
-          <label className="input input-bordered flex h-8 w-full items-center gap-2 focus-within:outline-0">
+          <label className="input input-bordered flex h-8 w-full items-center gap-2">
             <button
               onClick={onEditRelease}
               className="btn btn-square btn-outline btn-xs border-transparent"
