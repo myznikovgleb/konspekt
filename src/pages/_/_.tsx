@@ -9,11 +9,11 @@ import { Layout } from '@/shared/ui'
 const LINK_EXPLORE = 'https://github.com/myznikovgleb/konspekt'
 const PATH_PROCEED = '/folder'
 
-const Page_ = () => {
+const Page = () => {
   return (
     <Layout>
-      <section className="gradient-animated h-full w-full px-6 py-24">
-        <div className="bg-base-100/50 flex h-full w-full flex-col justify-end rounded-2xl backdrop-blur-md">
+      <section className="gradient-animated size-full px-6 py-24">
+        <div className="bg-base-100/50 flex size-full flex-col justify-end rounded-2xl backdrop-blur-md">
           <div className="flex grow flex-col items-center justify-end">
             <div className="flex flex-col items-center gap-4 p-8 md:p-0">
               <p className="text-8xl">📝</p>
@@ -44,4 +44,4 @@ const Page_ = () => {
   )
 }
 
-export { Page_ }
+export { Page }

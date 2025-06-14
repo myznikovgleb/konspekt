@@ -1,17 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 
-import { Page_ } from './_'
-import { Page_folder_ } from './_folder_'
-import { Page_viewer_ } from './_viewer_'
+import { Page as _ } from './_'
+import { Page as _folder_ } from './_folder_'
+import { Page as _viewer_ } from './_viewer_'
 
 const RouterProvider = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Page_ />} />
-        <Route path="folder" element={<Page_folder_ />} />
+        <Route index element={<_ />} />
+        <Route path="folder" element={<_folder_ />} />
         <Route path="viewer">
-          <Route path=":id" element={<Page_viewer_ />} />
+          <Route path=":id" element={<_viewer_ />} />
         </Route>
       </Routes>
     </BrowserRouter>

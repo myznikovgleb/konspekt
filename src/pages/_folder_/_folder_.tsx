@@ -5,7 +5,7 @@ import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
 import { Layout, Spinner } from '@/shared/ui'
 import { Menubar } from '@/widgets/menubar'
 
-const Page_folder_ = () => {
+const Page = () => {
   const dispatch = useStoreDispatch()
 
   const fetchingStatus = useStoreSelector(fileSlice.selectors.selectStatus)
@@ -33,4 +33,4 @@ const Page_folder_ = () => {
   )
 }
 
-export { Page_folder_ }
+export { Page }
