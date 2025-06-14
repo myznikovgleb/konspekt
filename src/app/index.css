@@ -7,21 +7,50 @@
 @plugin "daisyui/theme" {
   name: 'light';
   default: true;
-  --color-primary: #f59e0b;
-  --color-primary-content: #fafafa;
-  --color-base-100: #fafafa;
-  --color-base-200: #e5e5e5;
-  --color-base-300: #d4d4d4;
-  --color-base-content: #0a0a0a;
+  --color-primary: var(--color-blue-500);
+  --color-secondary: var(--color-emerald-500);
+  --color-neutral: var(--color-slate-700);
+  --color-neutral-content: var(--color-slate-50);
+  --color-base-content: var(--color-slate-700);
 }
 
 @plugin "daisyui/theme" {
   name: 'dark';
   prefersdark: true;
-  --color-primary: #fb923c;
-  --color-primary-content: #262626;
-  --color-base-100: #262626;
-  --color-base-200: #171717;
-  --color-base-300: #0a0a0a;
-  --color-base-content: #e5e5e5;
+  --color-primary: var(--color-blue-500);
+  --color-secondary: var(--color-emerald-500);
+  --color-neutral: var(--color-slate-50);
+  --color-neutral-content: var(--color-slate-700);
+  --color-base-content: var(--color-slate-50);
+}
+
+@layer components {
+  .gradient-animated {
+    background: linear-gradient(
+      135deg,
+      var(--color-blue-500),
+      var(--color-emerald-500),
+      var(--color-lime-500)
+    );
+    background-size: 200% 200%;
+    animation: flow 100s ease infinite;
+  }
+
+  @keyframes flow {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 100% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
 }
