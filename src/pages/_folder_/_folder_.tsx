@@ -21,14 +21,18 @@ const Page = () => {
 
   return (
     <Layout>
-      {isPending ? (
-        <Spinner />
-      ) : (
-        <>
-          <Menubar />
-          <FileFolder files={files} />
-        </>
-      )}
+      <section className="gradient-animated size-full">
+        {isPending ? (
+          <div className="flex size-full items-center justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          <div className="flex flex-col">
+            <Menubar />
+            <FileFolder files={files} />
+          </div>
+        )}
+      </section>
     </Layout>
   )
 }

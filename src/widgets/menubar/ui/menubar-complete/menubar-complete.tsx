@@ -1,17 +1,9 @@
-import {
-  CommandLineIcon,
-  DocumentIcon,
-  Square3Stack3DIcon,
-  Squares2X2Icon,
-} from '@heroicons/react/24/solid'
 import { Link } from 'react-router'
 
 import { MENUBAR_COMPLETE_HEIGHT, px } from '@/shared/config'
 
 import { About } from '../../../about'
 import { CommandPalette } from '../../../command-palette'
-
-import { MenubarCompleteDropdown } from './menubar-complete-dropdown'
 
 interface MenubarCompleteProps {
   onAddOne: () => void
@@ -24,47 +16,35 @@ const MenubarComplete = (props: MenubarCompleteProps) => {
 
   return (
     <div
-      className="navbar bg-base-200/50 shadow-base-200 w-screen shadow-lg"
+      className="bg-base-100/50 flex w-full justify-between backdrop-blur-md"
       style={{ height: px(MENUBAR_COMPLETE_HEIGHT) }}
     >
-      <div className="navbar-start gap-8">
-        <Link to={path} className="btn btn-ghost btn-lg">
-          <Squares2X2Icon className="size-6" />
-        </Link>
-        <div className="flex items-center justify-start gap-2">
-          <MenubarCompleteDropdown heading="File">
-            <li>
-              <button
-                onClick={onAddOne}
-                className="flex items-center justify-start gap-4 text-base"
-              >
-                <DocumentIcon className="size-6" />
-                <p>New file</p>
-              </button>
-            </li>
-          </MenubarCompleteDropdown>
-          <MenubarCompleteDropdown heading="View">
-            <li>
-              <CommandPalette rootedBy="complete">
-                <button className="flex items-center justify-start gap-4 text-base">
-                  <CommandLineIcon className="size-6" />
-                  <p>Command Palette</p>
-                </button>
-              </CommandPalette>
-            </li>
-          </MenubarCompleteDropdown>
-          <MenubarCompleteDropdown heading="Help">
-            <li>
-              <About>
-                <button className="flex items-center justify-start gap-4 text-base">
-                  <Square3Stack3DIcon className="size-6" />
-                  <p>About</p>
-                </button>
-              </About>
-            </li>
-          </MenubarCompleteDropdown>
-        </div>
-      </div>
+      <ul className="flex items-center gap-4 px-4">
+        <li>
+          <Link to={path} className="btn btn-ghost btn-neutral">
+            Force Quit
+          </Link>
+        </li>
+        <li>
+          <button onClick={onAddOne} className="btn btn-ghost btn-neutral">
+            <p>New File</p>
+          </button>
+        </li>
+        <li>
+          <CommandPalette rootedBy="complete">
+            <button className="btn btn-ghost btn-neutral">
+              <p>Command Palette</p>
+            </button>
+          </CommandPalette>
+        </li>
+        <li>
+          <About>
+            <button className="btn btn-ghost btn-neutral">
+              <p>About This App</p>
+            </button>
+          </About>
+        </li>
+      </ul>
     </div>
   )
 }

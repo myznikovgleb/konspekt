@@ -43,7 +43,7 @@ const CommandPalette = (props: CommandPaletteProps) => {
         </VisuallyHidden.Root>
         <Dialog.Content
           aria-describedby={undefined}
-          className="fixed left-1/2 -translate-x-1/2 scale-100 p-0"
+          className="fixed left-1/2 -translate-x-1/2"
           style={{ top: px(top) }}
         >
           <div className="flex flex-col items-center gap-6">
