@@ -1,5 +1,5 @@
 import { useLayoutEffect, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
 import { Permission } from '@/shared/api'
 import { FILE_FOLDER_PADDING, px } from '@/shared/config'
@@ -30,7 +30,9 @@ const FileFolder = (props: FileFolderProps) => {
       )
     }
 
-    window && handleResize()
+    if (window) {
+      handleResize()
+    }
 
     window.addEventListener('resize', handleResize)
 

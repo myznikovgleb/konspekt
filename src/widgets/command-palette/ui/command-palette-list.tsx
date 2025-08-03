@@ -1,5 +1,5 @@
 import { BookOpenIcon } from '@heroicons/react/24/solid'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import type { File } from '@/shared/api'
 
@@ -25,14 +25,14 @@ const CommandPaletteList = (props: CommandPaletteList) => {
           <Link
             to={`/viewer/${id}`}
             key={id}
-            className="flex items-center gap-2 rounded-md p-1.5 hover:bg-base-200"
+            className="hover:bg-base-300 group hover:*:first:bg-base-100 *:first:bg-base-300 flex items-center gap-2 rounded-md p-1.5"
           >
-            <div className="flex size-6 items-center justify-center rounded-md bg-base-300">
+            <div className="flex size-6 items-center justify-center rounded-md">
               <BookOpenIcon className="size-3" />
             </div>
             <div>
               <span>{filename.slice(0, firstIndex)}</span>
-              <span className="underline ">
+              <span className="underline">
                 {filename.slice(firstIndex, lastIndex)}
               </span>
               <span>{filename.slice(lastIndex)}</span>

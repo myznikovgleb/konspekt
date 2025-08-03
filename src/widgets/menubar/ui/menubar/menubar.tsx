@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
 import { fileSlice } from '@/entities/file'
 import { useStoreDispatch } from '@/shared/lib'

@@ -89,7 +89,7 @@ const FileIcon = (props: FileIconProps) => {
   const [iconState, setIconState] = useState<IconState>(IconState.Idle)
 
   const refTrigger = useRef<HTMLButtonElement>(null)
-  const refTimer = useRef<ReturnType<typeof setTimeout>>()
+  const refTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   const [spring, api] = useSpring(configurationFn(position, positionLimit), [
     position,
@@ -204,9 +204,9 @@ const FileIcon = (props: FileIconProps) => {
             onClick={onClick}
             onDoubleClick={onOpen}
             onContextMenu={onContextMenu}
-            className="flex size-28 cursor-pointer select-none flex-col items-center gap-2 rounded-xl p-2 md:hover:bg-base-200"
+            className="hover:bg-base-100/50 flex size-28 cursor-pointer flex-col items-center gap-2 rounded-xl p-2 select-none hover:backdrop-blur-md"
           >
-            <div className="rounded-xl bg-base-300 p-4">
+            <div className="bg-base-100 rounded-xl p-4">
               <BookOpenIcon className="size-8" />
             </div>
             <div className="w-full truncate text-center text-base font-semibold">
@@ -215,7 +215,7 @@ const FileIcon = (props: FileIconProps) => {
           </button>
         </Popover.Trigger>
         <Popover.Portal>
-          <Popover.Content>
+          <Popover.Content sideOffset={4}>
             <FileContext
               onOpen={onOpen}
               onRemove={onRemove}

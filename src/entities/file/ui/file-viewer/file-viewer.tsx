@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { Permission } from '@/shared/api'
 import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
@@ -45,7 +45,7 @@ const FileViewer = (props: FileViewerProps) => {
   const path = `/folder`
 
   return (
-    <form className="modal-box flex w-4/5 max-w-none scale-100 flex-col items-center p-0">
+    <form className="w-4/5 min-w-xs">
       <Titlebar
         title={filename}
         onChangeTitle={

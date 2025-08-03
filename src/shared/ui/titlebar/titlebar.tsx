@@ -30,11 +30,11 @@ const Titlebar = (props: TitlebarProps) => {
   const isDynamicTitle = title !== undefined && isEdit
 
   return (
-    <div className="flex h-12 w-full items-center bg-base-200 px-4">
+    <div className="bg-base-300 flex h-12 w-full items-center rounded-t-2xl px-4">
       <div className="w-1/4" />
       <div className="w-1/2">
         {isStaticTitle && (
-          <div className="input input-bordered flex h-8 w-full items-center gap-2 focus-within:outline-0">
+          <div className="input input-bordered flex h-8 w-full items-center gap-2">
             <button
               onClick={onEditRequest}
               disabled={onChangeTitle === undefined}
@@ -42,22 +42,22 @@ const Titlebar = (props: TitlebarProps) => {
             >
               <LockClosedIcon className="size-4" />
             </button>
-            <p className="min-w-0 grow truncate bg-base-100 text-center text-sm md:text-base">
+            <p className="bg-base-100 min-w-0 grow truncate text-center text-sm md:text-base">
               {title}
             </p>
           </div>
         )}
         {isDynamicTitle && (
-          <label className="input input-bordered flex h-8 w-full items-center gap-2 focus-within:outline-0">
+          <label className="input input-bordered flex h-8 w-full items-center gap-2">
             <button
               onClick={onEditRelease}
               className="btn btn-square btn-outline btn-xs border-transparent"
             >
-              <LockOpenIcon className="size-4 text-primary" />
+              <LockOpenIcon className="text-primary size-4" />
             </button>
             <input
               type="text"
-              className="min-w-0 grow bg-base-100 text-center text-sm md:text-base"
+              className="bg-base-100 min-w-0 grow text-center text-sm md:text-base"
               value={title}
               onChange={(e) => onChangeTitle!(e.target.value)}
             />
@@ -66,7 +66,7 @@ const Titlebar = (props: TitlebarProps) => {
       </div>
       <div className="w-1/4">
         <div className="flex w-full flex-row-reverse">
-          <div className="flex size-8 items-center justify-center *:size-4 *:rounded-full *:bg-error *:duration-150 *:ease-in *:hover:size-5">
+          <div className="*:bg-error flex size-8 items-center justify-center *:size-4 *:rounded-full *:duration-150 *:ease-in hover:*:size-5">
             {children}
           </div>
         </div>

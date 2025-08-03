@@ -10,7 +10,7 @@ const FileContext = (props: FileContextProps) => {
   const { onOpen, onRemove, onRename } = props
 
   return (
-    <ul className="menu gap-1 rounded-box bg-base-100 shadow-lg shadow-base-200">
+    <ul className="menu rounded-box bg-base-100/50 gap-1 shadow-lg shadow-black/20 backdrop-blur-md">
       {onOpen && (
         <li className="group rounded-none first:rounded-t-lg last:rounded-b-lg">
           <button
