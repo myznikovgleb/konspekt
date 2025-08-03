@@ -30,7 +30,7 @@ const Titlebar = (props: TitlebarProps) => {
   const isDynamicTitle = title !== undefined && isEdit
 
   return (
-    <div className="bg-base-200 flex h-12 w-full items-center px-4">
+    <div className="bg-base-300 flex h-12 w-full items-center rounded-t-2xl px-4">
       <div className="w-1/4" />
       <div className="w-1/2">
         {isStaticTitle && (

@@ -25,9 +25,9 @@ const CommandPaletteList = (props: CommandPaletteList) => {
           <Link
             to={`/viewer/${id}`}
             key={id}
-            className="hover:bg-base-200 flex items-center gap-2 rounded-md p-1.5"
+            className="hover:bg-base-300 group hover:*:first:bg-base-100 *:first:bg-base-300 flex items-center gap-2 rounded-md p-1.5"
           >
-            <div className="bg-base-300 flex size-6 items-center justify-center rounded-md">
+            <div className="flex size-6 items-center justify-center rounded-md">
               <BookOpenIcon className="size-3" />
             </div>
             <div>

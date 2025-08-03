@@ -8,7 +8,11 @@ const Page = () => {
 
   return (
     <Layout>
-      <FileViewer id={id} />
+      <section className="gradient-animated size-full">
+        <div className="flex size-full items-center justify-center">
+          <FileViewer id={id} />
+        </div>
+      </section>
     </Layout>
   )
 }

@@ -204,9 +204,9 @@ const FileIcon = (props: FileIconProps) => {
             onClick={onClick}
             onDoubleClick={onOpen}
             onContextMenu={onContextMenu}
-            className="md:hover:bg-base-200 flex size-28 cursor-pointer flex-col items-center gap-2 rounded-xl p-2 select-none"
+            className="hover:bg-base-100/50 flex size-28 cursor-pointer flex-col items-center gap-2 rounded-xl p-2 select-none hover:backdrop-blur-md"
           >
-            <div className="bg-base-300 rounded-xl p-4">
+            <div className="bg-base-100 rounded-xl p-4">
               <BookOpenIcon className="size-8" />
             </div>
             <div className="w-full truncate text-center text-base font-semibold">
@@ -215,7 +215,7 @@ const FileIcon = (props: FileIconProps) => {
           </button>
         </Popover.Trigger>
         <Popover.Portal>
-          <Popover.Content>
+          <Popover.Content sideOffset={4}>
             <FileContext
               onOpen={onOpen}
               onRemove={onRemove}
