@@ -1,17 +1,19 @@
-# Konspekt App
+<h1 align="center">Konspekt App</h1>
 
-[Konspekt App](https://konspekt.vercel.app "Konspekt App") is a note-taking app significantly charged with magic.
+<h3 align="center">A note-taking app significantly charged with magic.</h3>
 
-## How to run
+<br/>
 
-Follow [link](https://konspekt.vercel.app "Run Konspekt App") to give a try.
+## ✨ Getting Started
 
-## How to use
+Follow [link](https://konspekt.vercel.app 'Run Konspekt App') to give a try.
 
-:feather: Explore [Konspekt Docs](https://konspekt-docs.vercel.app "Explore Konspekt Docs") to learn more about Konspekt App.
+## 📜 Documentation
 
-## Tech details
+Explore [Konspekt Docs](https://konspekt-docs.vercel.app 'Explore Konspekt Docs') to learn more about Konspekt App.
 
-:scroll: Built with Redux Toolkit, Tailwind CSS and other great tools.
+## 🔮 Tech Details
 
-:crystal_ball: Designed to be adaptive on any user platform.
+- Built with Redux Toolkit, Tailwind CSS and other great tools.
+
+- Designed to be adaptive on any user platform.
