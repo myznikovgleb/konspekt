@@ -1,11 +1,5 @@
 import { Position } from '@/shared/api'
-import {
-  FILE_FOLDER_PADDING,
-  FILE_ICON_SIZE,
-  MENUBAR_COMPLETE_HEIGHT,
-  MENUBAR_SPLIT_HEIGHT,
-  SCREEN_MD,
-} from '@/shared/config'
+import { FILE_FOLDER_PADDING, FILE_ICON_SIZE } from '@/shared/config'
 
 const positionLimit = ({
   height,
@@ -14,9 +8,6 @@ const positionLimit = ({
   height: number
   width: number
 }): Position => {
-  const MENUBAR_HEIGHT =
-    width < SCREEN_MD ? MENUBAR_SPLIT_HEIGHT * 2 : MENUBAR_COMPLETE_HEIGHT
-
   return {
     col: Math.max(
       1,
@@ -24,9 +15,7 @@ const positionLimit = ({
     ),
     row: Math.max(
       1,
-      Math.floor(
-        (height - FILE_FOLDER_PADDING * 2 - MENUBAR_HEIGHT) / FILE_ICON_SIZE
-      )
+      Math.floor((height - FILE_FOLDER_PADDING * 2) / FILE_ICON_SIZE)
     ),
   }
 }
