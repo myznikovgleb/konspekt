@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { fileSlice, FileFolder } from '@/entities/file'
 import { useStoreDispatch, useStoreSelector } from '@/shared/lib'
 import { Layout, Spinner } from '@/shared/ui'
-import { Menubar } from '@/widgets/menubar'
+import { MenubarBottom, MenubarTop } from '@/widgets/menubar'
 
 const Page = () => {
   const dispatch = useStoreDispatch()
@@ -27,9 +27,10 @@ const Page = () => {
             <Spinner />
           </div>
         ) : (
-          <div className="flex flex-col">
-            <Menubar />
+          <div className="flex size-full flex-col">
+            <MenubarTop />
             <FileFolder files={files} />
+            <MenubarBottom />
           </div>
         )}
       </section>

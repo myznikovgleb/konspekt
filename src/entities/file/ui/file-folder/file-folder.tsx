@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo } from 'react'
+import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useNavigate } from 'react-router'
 
 import { Permission } from '@/shared/api'
@@ -20,12 +20,20 @@ const FileFolder = (props: FileFolderProps) => {
   const dispatch = useStoreDispatch()
   const navigate = useNavigate()
 
+  const ref = useRef<HTMLUListElement>(null)
+
   useLayoutEffect(() => {
     const handleResize = () => {
+      const current = ref.current
+
+      if (current === null) {
+        return
+      }
+
       dispatch(
         fileSlice.actions.setPositionLimit({
-          height: window.innerHeight,
-          width: window.innerWidth,
+          height: current.clientHeight,
+          width: current.clientWidth,
         })
       )
     }
@@ -64,6 +72,7 @@ const FileFolder = (props: FileFolderProps) => {
 
   return (
     <ul
+      ref={ref}
       className="relative size-full"
       style={{ padding: px(FILE_FOLDER_PADDING) }}
     >

@@ -4,27 +4,37 @@ import {
   Square3Stack3DIcon,
   Squares2X2Icon,
 } from '@heroicons/react/24/solid'
-import { Link } from 'react-router'
+import { nanoid } from 'nanoid'
+import { Link, useNavigate } from 'react-router'
 
-import { MENUBAR_COMPLETE_HEIGHT, px } from '@/shared/config'
+import { fileSlice } from '@/entities/file'
+import { useStoreDispatch } from '@/shared/lib'
 
 import { About } from '../../../about'
 import { CommandPalette } from '../../../command-palette'
 
-interface MenubarCompleteProps {
-  onAddOne: () => void
-}
+const MenubarTop = () => {
+  const dispatch = useStoreDispatch()
+  const navigate = useNavigate()
 
-const MenubarComplete = (props: MenubarCompleteProps) => {
-  const { onAddOne } = props
+  const onAddOne = () => {
+    const id = nanoid()
+
+    dispatch(
+      fileSlice.actions.addOne({
+        id,
+        filename: 'konspekt.md',
+      })
+    )
+
+    const path = `/viewer/${id}`
+    navigate(path)
+  }
 
   const path = '/'
 
   return (
-    <div
-      className="bg-base-100/50 flex w-full justify-between backdrop-blur-md"
-      style={{ height: px(MENUBAR_COMPLETE_HEIGHT) }}
-    >
+    <div className="bg-base-100/50 hidden min-h-16 w-full justify-between backdrop-blur-md md:flex">
       <ul className="flex items-center gap-4 px-4">
         <li>
           <Link
@@ -45,7 +55,7 @@ const MenubarComplete = (props: MenubarCompleteProps) => {
           </button>
         </li>
         <li>
-          <CommandPalette rootedBy="complete">
+          <CommandPalette>
             <button className="btn btn-sm btn-ghost btn-neutral flex h-full w-32 flex-col p-2">
               <CommandLineIcon className="size-6" />
               <p>Command Palette</p>
@@ -65,4 +75,4 @@ const MenubarComplete = (props: MenubarCompleteProps) => {
   )
 }
 
-export { MenubarComplete }
+export { MenubarTop }

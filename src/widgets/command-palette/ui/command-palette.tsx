@@ -1,14 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { useState } from 'react'
-import { match } from 'ts-pattern'
 
 import { fileSlice } from '@/entities/file'
-import {
-  MENUBAR_COMPLETE_HEIGHT,
-  MENUBAR_SPLIT_HEIGHT,
-  px,
-} from '@/shared/config'
 import { useStoreSelector } from '@/shared/lib'
 
 import { CommandPaletteList } from './command-palette-list'
@@ -17,22 +11,16 @@ import type { ReactNode } from 'react'
 
 interface CommandPaletteProps {
   children: ReactNode
-  rootedBy: 'complete' | 'split'
 }
 
 const CommandPalette = (props: CommandPaletteProps) => {
-  const { children, rootedBy } = props
+  const { children } = props
 
   const [command, setCommand] = useState<string>('')
 
   const filesWithIndices = useStoreSelector((state) =>
     fileSlice.selectors.selectAllByFilename(state, command)
   )
-
-  const top = match(rootedBy)
-    .with('complete', () => MENUBAR_COMPLETE_HEIGHT)
-    .with('split', () => MENUBAR_SPLIT_HEIGHT)
-    .exhaustive()
 
   return (
     <Dialog.Root>
@@ -43,8 +31,7 @@ const CommandPalette = (props: CommandPaletteProps) => {
         </VisuallyHidden.Root>
         <Dialog.Content
           aria-describedby={undefined}
-          className="bg-base-100 fixed left-1/2 min-w-xs -translate-x-1/2 rounded-2xl p-4 shadow-lg shadow-black/20"
-          style={{ top: px(top) }}
+          className="bg-base-100 fixed top-1/3 left-1/2 min-w-xs -translate-1/2 rounded-2xl p-4 shadow-lg shadow-black/20"
         >
           <div className="flex flex-col items-center gap-6">
             <input
